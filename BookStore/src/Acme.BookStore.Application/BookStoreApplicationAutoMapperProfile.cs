@@ -1,6 +1,7 @@
 ﻿using Acme.BookStore.Authors;
 using Acme.BookStore.BookMarks;
 using Acme.BookStore.Books;
+using Acme.BookStore.NewBooks;
 using Acme.BookStore.Products;
 using AutoMapper;
 
@@ -22,6 +23,8 @@ namespace Acme.BookStore
             CreateMap<CreateUpdateBookMarkDto,BookMark>();
 
             CreateMap<Product, ProductDto>();
+
+            CreateMap<NewBook, NewBookDto>();
         }
     }
 }

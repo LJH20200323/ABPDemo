@@ -1,0 +1,32 @@
+﻿@page
+@model Acme.BookStore.Web.Pages.BookMarks.IndexModel
+@using Acme.BookStore.Permissions
+@using Acme.BookStore.Web.Pages.BookMarks
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Authorization
+@using Acme.BookStore.Localization
+@inject IStringLocalizer<BookStoreResource> L
+@inject IAuthorizationService AuthorizationService
+@section scripts{
+    <abp-script src="/Pages/BookMarks/Index.js" />
+}
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-header>@L["BookMarks"]</abp-card-header>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                
+                <abp-button id="NewBookMarkButton"
+                            text="@L["NewBookMark"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="BookMarksTable"></abp-table>
+    </abp-card-body>
+</abp-card>

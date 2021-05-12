@@ -56,8 +56,8 @@ namespace Acme.BookStore.NewBooks
         {
             if (string .IsNullOrWhiteSpace(name))
                 throw new ArgumentException($"name can not be empty or white space!");
-            if (name.Length > MaxNameLength)
-                throw new ArgumentException($"name can not be longer than {MaxNameLength} chars!");
+            if (name.Length > NewBookConsts.MaxNameLength)
+                throw new ArgumentException($"name can not be longer than {NewBookConsts.MaxNameLength} chars!");
             return name;
         }
     }

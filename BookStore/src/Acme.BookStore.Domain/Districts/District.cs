@@ -17,5 +17,9 @@ namespace Acme.BookStore.Districts
         {
             return new object[] {CityId,Name };
         }
+
+
+
+
     }
 }

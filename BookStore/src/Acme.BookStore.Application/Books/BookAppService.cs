@@ -59,7 +59,8 @@ namespace Acme.BookStore.Books
             var query = from book in queryable
                         join author in _authorRepository on book.AuthorId equals author.Id
                         select new { book, author };
-            query = query.OrderBy(NormalizeSorting(input.Sorting)).Skip(input.SkipCount).Take(input.MaxResultCount);
+            //query = query.OrderBy(NormalizeSorting(input.Sorting)).Skip(input.SkipCount).Take(input.MaxResultCount);
+            query = query.OrderBy(NormalizeSorting(input.Sorting)).PageBy(input.SkipCount,input.MaxResultCount);
             var queryResult = await AsyncExecuter.ToListAsync(query);
             var bookDtos = queryResult.Select(x =>
             {

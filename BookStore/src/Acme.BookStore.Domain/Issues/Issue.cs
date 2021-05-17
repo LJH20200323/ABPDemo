@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
 namespace Acme.BookStore.Issues
 {
-    public class Issue : AggregateRoot<Guid>
+    public class Issue : AggregateRoot<Guid>, IHasCreationTime
     {
         public Guid RepositoryId { get; private set; }
 
@@ -27,6 +28,9 @@ namespace Acme.BookStore.Issues
         public IssueCloseReason? CloseReason { get; private set; } 
 
         public ICollection<IssueLabel> Labels { get; private set; }
+
+        public DateTime CreationTime { get; private set; }
+        public DateTime? LastCommentTime { get; private set; }
 
         public Issue(
             Guid id,
@@ -104,6 +108,15 @@ namespace Acme.BookStore.Issues
         public void CleanAssignment()
         {
             AssignedUserId = null;
+        }
+
+        public bool IsInActive()
+        {
+            var days = DateTime.Now.Subtract(TimeSpan.FromDays(15));
+            return !IsClosed &&
+                AssignedUserId == null &&
+                CreationTime < days &&
+                (LastCommentTime == null || LastCommentTime < days);
         }
     }
 }

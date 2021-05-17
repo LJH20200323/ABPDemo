@@ -12,10 +12,17 @@ namespace Acme.BookStore.Issues
     public class Issue : AggregateRoot<Guid>
     {
         public Guid RepositoryId { get; private set; }
+
         public string Title { get; private set; }
+
         public string Text { get; private set; }
+
         public Guid? AssignedUserId { get; private set; }
+
         public bool IsClosed { get; private set; }
+
+        public bool IsLocked { get; private set; }
+
         public IssueCloseReason? CloseReason { get; private set; } 
 
         public ICollection<IssueLabel> Labels { get; private set; }
@@ -54,8 +61,31 @@ namespace Acme.BookStore.Issues
 
         public void ReOpen()
         {
+            if (IsLocked)
+            {
+                throw new IssueStateException(
+                    "Can not open a locked issue! Unlock it first."
+                );
+            }
             IsClosed = false;
             CloseReason = null;
+        }
+
+        public void Lock()
+        {
+            if (!IsClosed)
+            {
+                throw new IssueStateException(
+                    "Can not open a locked issue! Unlock it first."
+                );
+            }
+
+            IsLocked = true;
+        }
+
+        public void Unlock()
+        {
+            IsLocked = false;
         }
     }
 }

@@ -51,7 +51,8 @@
     "Enum:BookIsTrue:1": "False",
     "BookMarkDeletionConfirmationMessage": "Are you sure to delete the bookMark '{0}'?",
     "Menu:BookMarks": "BookMarks",
-    "NewBookMark": "New bookMark"
+    "NewBookMark": "New bookMark",
+    "IssueTracking:CanNotOpenLockedIssue": "Can not open a locked issue! Unlock it first."
 
   }
 }

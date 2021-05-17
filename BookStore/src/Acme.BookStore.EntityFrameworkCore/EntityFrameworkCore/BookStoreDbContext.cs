@@ -80,6 +80,10 @@ namespace Acme.BookStore.EntityFrameworkCore
                  * Also see the BookStoreEfCoreEntityExtensionMappings class
                  */
             });
+            builder.Entity<OrderLine>().HasNoKey();
+
+            builder.Entity<Order>().Ignore("OrderLines");
+            builder.Entity<UserRole>().HasNoKey();
 
             /* Configure your own tables/entities inside the ConfigureBookStore method */
 

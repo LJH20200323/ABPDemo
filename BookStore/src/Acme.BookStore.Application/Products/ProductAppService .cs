@@ -10,7 +10,7 @@ using Volo.Abp.Linq;
 
 namespace Acme.BookStore.Products
 {
-    class ProductAppService : ApplicationService, IProductAppService
+    public class ProductAppService : ApplicationService, IProductAppService
     {
         private readonly IRepository<Product, Guid> _productRepository;
         private readonly IAsyncQueryableExecuter _asyncExecuter;

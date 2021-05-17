@@ -9,13 +9,13 @@ namespace Acme.BookStore.Districts
 {
     public class District:Entity
     {
-        public Guid D3Id { get; set; }
+        public Guid CityId { get; set; }
 
         public string Name { get; set; }
 
         public override object[] GetKeys()
         {
-            return new object[] { D3Id, Name };
+            return new object[] { CityId, Name };
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Acme.BookStore.Orders
 
         public override object[] GetKeys()
         {
-            return new object[] {OrderId,ProductId };
+            return new object[] { OrderId, ProductId };
         }
     }
 }

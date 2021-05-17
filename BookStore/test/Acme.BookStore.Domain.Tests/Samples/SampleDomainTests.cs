@@ -34,6 +34,7 @@ namespace Acme.BookStore.Samples
                 adminUser = await _identityUserRepository
                     .FindByNormalizedUserNameAsync("ADMIN");
 
+                
                 await _identityUserManager.SetEmailAsync(adminUser, "newemail@abp.io");
                 await _identityUserRepository.UpdateAsync(adminUser);
             });

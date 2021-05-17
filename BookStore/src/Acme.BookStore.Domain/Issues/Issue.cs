@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.BookStore.Users;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -86,6 +87,23 @@ namespace Acme.BookStore.Issues
         public void Unlock()
         {
             IsLocked = false;
+        }
+
+        public async Task AssignToAsync(AppUser user, IUserIssueService userIssueService)
+        {
+            var openIssueCount = await userIssueService.GetOpenIssueCountAsync(user.Id);
+
+            if (openIssueCount >= 3)
+            {
+                throw new BusinessException("IssueTracking:ConcurrentOpenIssueLimit");
+            }
+
+            AssignedUserId = user.Id;
+        }
+
+        public void CleanAssignment()
+        {
+            AssignedUserId = null;
         }
     }
 }

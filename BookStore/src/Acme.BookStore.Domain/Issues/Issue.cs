@@ -64,7 +64,7 @@ namespace Acme.BookStore.Issues
             if (IsLocked)
             {
                 throw new IssueStateException(
-                    "Can not open a locked issue! Unlock it first."
+                    "IssueTracking:CanNotOpenLockedIssue"
                 );
             }
             IsClosed = false;

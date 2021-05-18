@@ -2,6 +2,7 @@
 using Acme.BookStore.BookMarks;
 using Acme.BookStore.Books;
 using Acme.BookStore.NewBooks;
+using Acme.BookStore.NewIssues;
 using Acme.BookStore.Products;
 using AutoMapper;
 
@@ -25,6 +26,9 @@ namespace Acme.BookStore
             CreateMap<Product, ProductDto>();
 
             CreateMap<NewBook, NewBookDto>();
+
+            CreateMap<NewIssue,NewIssueDto>();
+
         }
     }
 }

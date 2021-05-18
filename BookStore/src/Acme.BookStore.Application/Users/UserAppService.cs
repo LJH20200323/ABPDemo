@@ -16,17 +16,22 @@ namespace Acme.BookStore.Users
             _userRepository = userRepository;
         }
 
-        public async Task ChangePasswordAsync(UserChangePasswordDto input)
+        public Task<UserDto> Create(UserCreationDto input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task CreateAsync(UserCreationDto input)
+        public Task<UserDto> Get(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task UpdateAsync(UserUpdateDto input)
+        public Task<List<UserDto>> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UserDto> Update(UserUpdateDto input)
         {
             throw new NotImplementedException();
         }

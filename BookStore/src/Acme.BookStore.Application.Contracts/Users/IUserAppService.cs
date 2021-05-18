@@ -8,8 +8,9 @@ namespace Acme.BookStore.Users
 {
     public interface IUserAppService : IApplicationService
     {
-        Task CreateAsync(UserCreationDto input);
-        Task UpdateAsync(UserUpdateDto input);
-        Task ChangePasswordAsync(UserChangePasswordDto input);
+        Task<UserDto> Get(Guid id);
+        Task<List<UserDto>> GetList();
+        Task<UserDto> Create(UserCreationDto input);
+        Task<UserDto> Update(UserUpdateDto input);
     }
 }

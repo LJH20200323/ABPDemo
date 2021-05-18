@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Specifications;
 
-namespace Acme.BookStore.Issues
+namespace Acme.BookStore.Issues.Specification
 {
     public class InActiveIssueSpecification : Specification<Issue>
     {

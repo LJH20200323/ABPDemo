@@ -8,6 +8,6 @@ namespace Acme.BookStore.Issues
 {
     public interface IIssueAppService: IApplicationService
     {
-        Task DoItAsync();
+        Task DoItAsync(Guid milestoneId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Acme.BookStore.Users;
+﻿using Acme.BookStore.Issues.Specification;
+using Acme.BookStore.Users;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,8 @@ namespace Acme.BookStore.Issues
     public class Issue : AggregateRoot<Guid>, IHasCreationTime
     {
         public Guid RepositoryId { get; private set; }
+
+        public Guid MilestoneId { get; private set; }
 
         public string Title { get; private set; }
 

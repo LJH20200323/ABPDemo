@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Acme.BookStore.Issues.Specification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Specifications;
 
 namespace Acme.BookStore.Issues
 {
@@ -17,9 +19,11 @@ namespace Acme.BookStore.Issues
             _issueRepository = issueRepository;
         }
 
-        public async Task DoItAsync()
+        public async Task DoItAsync(Guid milestoneId)
         {
-            var issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(new InActiveIssueSpecification()));
+            var issues = await AsyncExecuter.ToListAsync(
+                _issueRepository.Where(new InActiveIssueSpecification()
+                .And(new MilestoneSpecification(milestoneId)).ToExpression()));
         }
     }
 }

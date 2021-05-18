@@ -9,5 +9,7 @@ namespace Acme.BookStore.NewIssues
     public interface INewIssueAppService: IApplicationService
     {
         Task<NewIssueDto> CreateAsync(NewIssueCreationDto input);
+
+        Task<NewIssueDto> UpdateAsync(Guid id, UpdateNewIssueDto input)
     }
 }

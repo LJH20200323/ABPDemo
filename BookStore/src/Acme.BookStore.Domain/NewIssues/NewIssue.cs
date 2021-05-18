@@ -24,7 +24,7 @@ namespace Acme.BookStore.NewIssues
 
         private NewIssue() { }
 
-        public void SetTitle(string title)
+        internal void SetTitle(string title)
         {
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));
         }

@@ -36,5 +36,20 @@ namespace Acme.BookStore.NewIssues
             await _newIssueRepository.InsertAsync(newIssue);
             return ObjectMapper.Map<NewIssue, NewIssueDto>(newIssue);
         }
+
+        public async Task<NewIssueDto> UpdateAsync(Guid id, UpdateNewIssueDto input)
+        {
+            var newIssue = await _newIssueRepository.GetAsync(id);
+            await _newIssueManager.ChangeTitleAsync(newIssue,input.Title);
+
+            if (input.AssignedUserId.HasValue)
+            {
+                var user = await _userRepository.GetAsync(input.AssignedUserId.Value);
+                await _newIssueManager.AssignToAsync(newIssue, user);
+            }
+            newIssue.Text = input.Text;
+            await _newIssueRepository.UpdateAsync(newIssue);
+            return ObjectMapper.Map<NewIssue,NewIssueDto>(newIssue);
+        }
     }
 }

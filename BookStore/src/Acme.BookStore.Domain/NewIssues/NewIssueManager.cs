@@ -42,5 +42,17 @@ namespace Acme.BookStore.NewIssues
                 text
             );
         }
+
+        public async Task ChangeTitleAsync(NewIssue newIssue, string title)
+        {
+            if (newIssue.Title == title)
+                return;
+            if (await _newIssueRepository.AnyAsync(i => i.Title == title))
+            {
+                throw new BusinessException("IssueTracking:IssueWithSameTitleExists");
+            }
+            newIssue.SetTitle(title);
+
+        }
     }
 }

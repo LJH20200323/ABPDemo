@@ -112,11 +112,7 @@ namespace Acme.BookStore.Issues
 
         public bool IsInActive()
         {
-            var days = DateTime.Now.Subtract(TimeSpan.FromDays(15));
-            return !IsClosed &&
-                AssignedUserId == null &&
-                CreationTime < days &&
-                (LastCommentTime == null || LastCommentTime < days);
+            return new InActiveIssueSpecification().IsSatisfiedBy(this);
         }
     }
 }

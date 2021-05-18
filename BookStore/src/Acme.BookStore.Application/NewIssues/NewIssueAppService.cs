@@ -27,11 +27,7 @@ namespace Acme.BookStore.NewIssues
 
         public async Task<NewIssueDto> CreateAsync(NewIssueCreationDto input)
         {
-            var newIssue = new NewIssue(
-            GuidGenerator.Create(),
-            input.RepositoryId,
-            input.Title,
-            input.Text);
+            var newIssue = await _newIssueManager.CreateAsync(GuidGenerator.Create(),input.Title,input.Text);
             if (input.AssignedUserId.HasValue)
             {
                 var user = await _userRepository.GetAsync(input.AssignedUserId.Value);

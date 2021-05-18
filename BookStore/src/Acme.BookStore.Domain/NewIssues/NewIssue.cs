@@ -15,7 +15,7 @@ namespace Acme.BookStore.NewIssues
         public string Text { get; set; }
         public Guid? AssignedUserId { get; internal set; }
 
-        public NewIssue(Guid id, Guid repositoryId, string title, string text = null) : base(id)
+        internal NewIssue(Guid id, Guid repositoryId, string title, string text = null) : base(id)
         {
             RepositoryId = repositoryId;
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));

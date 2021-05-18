@@ -30,5 +30,17 @@ namespace Acme.BookStore.NewIssues
             }
             newIssue.AssignedUserId = user.Id;
         }
+
+        public async Task<NewIssue> CreateAsync(Guid repositoryId, string title, string text = null)
+        {
+            if (await _newIssueRepository.AnyAsync(i => i.Title == title))
+                throw new BusinessException("IssueTracking:IssueWithSameTitleExists");
+            return new NewIssue(
+                GuidGenerator.Create(),
+                repositoryId,
+                title,
+                text
+            );
+        }
     }
 }

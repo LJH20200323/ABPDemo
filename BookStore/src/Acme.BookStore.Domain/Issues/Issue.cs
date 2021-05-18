@@ -18,11 +18,11 @@ namespace Acme.BookStore.Issues
 
         public Guid MilestoneId { get; private set; }
 
+        public Guid? AssignedUserId { get; internal set; }
+
         public string Title { get; private set; }
 
         public string Text { get; private set; }
-
-        public Guid? AssignedUserId { get; private set; }
 
         public bool IsClosed { get; private set; }
 

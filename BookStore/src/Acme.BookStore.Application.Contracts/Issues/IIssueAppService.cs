@@ -9,5 +9,7 @@ namespace Acme.BookStore.Issues
     public interface IIssueAppService: IApplicationService
     {
         Task DoItAsync(Guid milestoneId);
+
+        Task AssignAsync(IssueAssignDto input);
     }
 }
